@@ -16,7 +16,7 @@ import cartopy.crs as ccrs
 #nombre_titulo = 'forzante'
 #nombre_archivo = 'forzante_tiempo_50_EB1'
 
-def mapa(cmin,cmax,ncont,lat,lon,L,VAR,cmap,nombre_titulo,nombre_archivo):
+def mapa2(cmin,cmax,ncont,lat,lon,L,VAR,cmap,nombre_titulo,nombre_archivo):
     
     #Pasamos las latitudes/longitudes del dataset a una reticula para graficar
     lons, lats = np.meshgrid(lon, lat)
@@ -42,8 +42,8 @@ def mapa(cmin,cmax,ncont,lat,lon,L,VAR,cmap,nombre_titulo,nombre_archivo):
     ax.add_feature(cartopy.feature.COASTLINE)
     ax.add_feature(cartopy.feature.BORDERS, linestyle='-', alpha=.5)
     ax.gridlines(crs=crs_latlon, linewidth=0.3, linestyle='-')
-    ax.set_xticks(np.arange(-180, 180, 45), crs=crs_latlon)
-    ax.set_yticks(np.arange(-90, 90, 30), crs=crs_latlon)
+    ax.set_xticks(np.arange(60, 180, 45), crs=crs_latlon)
+    ax.set_yticks(np.arange(-90, 10, 30), crs=crs_latlon)
     lon_formatter = LongitudeFormatter(zero_direction_label=True)
     lat_formatter = LatitudeFormatter()
     ax.xaxis.set_major_formatter(lon_formatter)
@@ -56,3 +56,4 @@ def mapa(cmin,cmax,ncont,lat,lon,L,VAR,cmap,nombre_titulo,nombre_archivo):
     
     #Guardar figura
     plt.savefig(nombre_archivo + '.jpg')
+
